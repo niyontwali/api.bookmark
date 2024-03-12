@@ -1,15 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors')
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const bookmarkRoutes = require("./routes/bookmarkRoutes");
 require("dotenv").config();
+
 
 const app = express();
 const { PORT, MONGODB_URL } = process.env;
 
 // Middleware
 app.use(express.json());
+
+// use cors
+app.use(cors())
 
 // Routes
 app.use("/auth", authRoutes);
